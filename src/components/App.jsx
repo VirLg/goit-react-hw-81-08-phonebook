@@ -5,15 +5,22 @@ import Form from './Form/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import { filter } from '../redux/sliceFilter';
 import { myContactSelector, myFilterSelector } from 'redux/selector';
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import { contactsAddThunk, contactsThunk } from 'redux/thunk';
+import { Route, Routes } from 'react-router-dom';
+import Layout from 'layout/Layout';
+import HomePage from 'page/HomePage';
+import LoginPage from 'page/LoginPage';
+import SingUpPage from 'page/SingUpPage';
 
 const App = function () {
   const { contactApi } = useSelector(myContactSelector);
   const dispatch = useDispatch();
-  const { isLoading, error } = useSelector(state => state.contactApi)
-  useEffect(() => { dispatch(contactsThunk()) }, [dispatch])
-  
+  const { isLoading, error } = useSelector(state => state.contactApi);
+  useEffect(() => {
+    dispatch(contactsThunk());
+  }, [dispatch]);
+
   const addContact = props => {
     const { name, number } = props;
     if (contactApi) {
@@ -23,17 +30,19 @@ const App = function () {
       if (check) {
         return alert('NoNoNo');
       }
-  
+
       dispatch(contactsAddThunk({ name, number, id: nanoid() }));
     }
   };
-  const filterArrContact = useSelector(myFilterSelector)
-  
+  const filterArrContact = useSelector(myFilterSelector);
+
   const filterContact = e => {
     if (e.target.value) {
-      dispatch(filter(e.target.value))
-    } else { dispatch(filter(''))}
-  }
+      dispatch(filter(e.target.value));
+    } else {
+      dispatch(filter(''));
+    }
+  };
   return (
     <div
       style={{
@@ -44,12 +53,19 @@ const App = function () {
         color: '#010101',
       }}
     >
-      {isLoading&&<h2>Loading...</h2>}
-      <Form  addContact={addContact}/>
+      {isLoading && <h2>Loading...</h2>}
+      <Form addContact={addContact} />
       <Filter filterContact={filterContact} />
-      {error?error.message:<Contact  />}
+      {error ? error.message : <Contact />}
       {/* {visibleContact&& filterArrContact} */}
-      <Contact filterArrContact={ filterArrContact} />
+      <Contact filterArrContact={filterArrContact} />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+        </Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signUp" element={<SingUpPage />} />
+      </Routes>
     </div>
   );
 };
