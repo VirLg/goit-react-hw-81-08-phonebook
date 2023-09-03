@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  contactsAddThunk,
-  contactsDeleteThunk,
-  contactsThunk,
-} from './thunk';
-import { initialState } from './initialState';
+import { contactsAddThunk, contactsDeleteThunk, contactsThunk } from './thunk';
+
+const initialState = {
+  contactsApi: [],
+  isLoading: false,
+  error: '',
+};
 
 const handlePending = state => {
   state.isLoading = true;
@@ -19,9 +20,7 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 export const handleDeleteFulfielled = (state, { payload }) => {
-  state.contactsApi = state.contactsApi.filter(
-    el => el.id !== payload.data.id
-  );
+  state.contactsApi = state.contactsApi.filter(el => el.id !== payload.data.id);
 };
 
 export const handleAddFulfielled = (state, action) => {
