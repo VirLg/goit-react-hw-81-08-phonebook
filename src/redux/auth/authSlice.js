@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { authThunk } from './authThunk';
+import { loginThunk, signUpThunk } from './authThunk';
 const initialState = {
   access_token: '',
   isLoading: false,
@@ -7,7 +7,11 @@ const initialState = {
   user: null,
 };
 const handleLogin = (state, action) => {
-  state.access_token = action.payload.access_token;
+  state.access_token = action.payload.token;
+  state.user = action.payload.user;
+};
+const handlesignUp = (state, action) => {
+  state.access_token = action.payload.token;
   state.user = action.payload.user;
 };
 const handleRejected = (state, action) => {
@@ -23,7 +27,8 @@ export const authSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(authThunk.fulfilled, handleLogin)
+      .addCase(loginThunk.fulfilled, handleLogin)
+      .addCase(signUpThunk.fulfilled, handlesignUp)
       .addMatcher(action => {
         action.type.endsWith('/pending');
       }, handlePending)

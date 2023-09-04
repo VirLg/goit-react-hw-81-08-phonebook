@@ -1,11 +1,14 @@
 import { signUp } from 'api/auth';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { signUpThunk } from 'redux/auth/authThunk';
 
 const SignUpPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const dispath = useDispatch();
   const handleChange = e => {
     e.target.name === 'name'
       ? setName(e.target.value)
@@ -15,7 +18,7 @@ const SignUpPage = () => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    signUp({ name, email, password });
+    dispath(signUpThunk({ name, email, password }));
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -36,7 +39,8 @@ const SignUpPage = () => {
           name="password"
         />
       </label>
-      <button type="submit">Log In</button>
+      <button type="submit">Sign Up</button>
+      <Link to="/login">Login</Link>
     </form>
   );
 };
