@@ -18,3 +18,8 @@ export const signUp = async body => {
 
   return data;
 };
+export const logOut = async () => {
+  const { data } = await instance.post('/users/logout');
+
+  return data;
+};
