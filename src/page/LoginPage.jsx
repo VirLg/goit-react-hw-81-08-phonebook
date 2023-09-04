@@ -1,22 +1,22 @@
+import { login } from 'api/auth';
 import React, { useState } from 'react';
 
 const LoginPage = () => {
-  const [name, setName] = useState('');
-  const [email, setemail] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleChange = e => {
-    console.log('e.target.name', e.target.name);
+    e.target.name === 'email'
+      ? setEmail(e.target.value)
+      : setPassword(e.target.value);
   };
   const handleSubmit = e => {
     e.preventDefault();
+    const a = login({ email, password });
+    console.log('a', a);
   };
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Name
-        <input onChange={handleChange} value={name} type="text" name="name" />
-      </label>
       <label>
         Email
         <input onChange={handleChange} value={email} type="text" name="email" />
