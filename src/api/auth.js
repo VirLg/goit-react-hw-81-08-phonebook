@@ -2,6 +2,9 @@ import axios from 'axios';
 
 const setToken = token =>
   (instance.defaults.headers.common['Authorization'] = `Bearer ${token}`);
+export const delToken = () =>
+  delete instance.defaults.headers.common['Authorization'];
+
 const instance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
 });

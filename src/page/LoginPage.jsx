@@ -22,7 +22,12 @@ const LoginPage = () => {
     dishath(loginThunk({ email, password }));
   };
   useEffect(() => {
-    if (isAuth) navigate('/');
+    if (isAuth) {
+      return navigate('/');
+    } else {
+      console.log('isAuth', isAuth);
+      navigate('/login');
+    }
   }, [isAuth, navigate]);
   return (
     <form onSubmit={handleSubmit}>

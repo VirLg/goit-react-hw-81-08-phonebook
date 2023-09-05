@@ -15,7 +15,10 @@ const handleSignUp = (state, action) => {
   state.user = action.payload.user;
 };
 const handlelogOut = (state, action) => {
-  state.auth = action.payload;
+  console.log('first', action.payload);
+  // state.auth = action.payload;
+  state.access_token = '';
+  state.user = null;
 };
 const handleRejected = (state, action) => {
   state.isLoading = false;
