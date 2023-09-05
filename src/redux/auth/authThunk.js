@@ -7,5 +7,4 @@ export const signUpThunk = createAsyncThunk('auth/signUp', body =>
 );
 export const logOutThunk = createAsyncThunk('auth/logout', body => {
   logOut(body);
-  delToken();
 });

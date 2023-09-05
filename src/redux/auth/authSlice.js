@@ -1,11 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logOutThunk, loginThunk, signUpThunk } from './authThunk';
+import { delToken } from 'api/auth';
+import { useNavigate } from 'react-router-dom';
 const initialState = {
   access_token: '',
   isLoading: false,
   error: '',
   user: null,
 };
+
 const handleLogin = (state, action) => {
   state.access_token = action.payload.token;
   state.user = action.payload.user;
@@ -15,10 +18,11 @@ const handleSignUp = (state, action) => {
   state.user = action.payload.user;
 };
 const handlelogOut = (state, action) => {
-  console.log('first', action.payload);
-  // state.auth = action.payload;
+  state.isLoading = false;
+  state.error = '';
   state.access_token = '';
   state.user = null;
+  delToken();
 };
 const handleRejected = (state, action) => {
   state.isLoading = false;

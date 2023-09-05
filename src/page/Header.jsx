@@ -1,4 +1,3 @@
-import { delToken } from 'api/auth';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
