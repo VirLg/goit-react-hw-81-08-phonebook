@@ -1,7 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logOutThunk, loginThunk, signUpThunk } from './authThunk';
+import {
+  logOutThunk,
+  loginThunk,
+  refreshThunk,
+  signUpThunk,
+} from './authThunk';
 import { delToken } from 'api/auth';
-import { useNavigate } from 'react-router-dom';
+
 const initialState = {
   access_token: '',
   isLoading: false,
@@ -24,6 +29,7 @@ const handlelogOut = (state, action) => {
   state.user = null;
   delToken();
 };
+
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
@@ -37,14 +43,15 @@ export const authSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
+      // .addCase(refreshThunk.fulfilled, handleLogin)
       .addCase(loginThunk.fulfilled, handleLogin)
       .addCase(signUpThunk.fulfilled, handleSignUp)
       .addCase(logOutThunk.fulfilled, handlelogOut)
       .addMatcher(action => {
-        action.type.endsWith('/pending');
+        return action.type.endsWith('/pending');
       }, handlePending)
       .addMatcher(action => {
-        action.type.endsWith('/rejected');
+        return action.type.endsWith('/rejected');
       }, handleRejected);
   },
 });

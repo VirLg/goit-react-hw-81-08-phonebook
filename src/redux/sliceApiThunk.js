@@ -35,12 +35,8 @@ export const contactApiSlice = createSlice({
       .addCase(contactsThunk.fulfilled, handleFulfilled)
       .addCase(contactsDeleteThunk.fulfilled, handleDeleteFulfielled)
       .addCase(contactsAddThunk.fulfilled, handleAddFulfielled)
-      .addMatcher(action => {
-        action.type.endsWith('/pending');
-      }, handlePending)
-      .addMatcher(action => {
-        action.type.endsWith('/rejected');
-      }, handleRejected);
+      .addMatcher(action => action.type.endsWith('/pending'), handlePending)
+      .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },
 });
 

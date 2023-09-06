@@ -62,9 +62,9 @@ const App = function () {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signUp" element={<SingUpPage />} />
         </Route>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signUp" element={<SingUpPage />} />
       </Routes>
     </div>
   );
