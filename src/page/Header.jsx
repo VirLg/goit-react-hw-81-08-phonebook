@@ -10,7 +10,7 @@ const Header = () => {
   const navigate = useNavigate();
   const dispath = useDispatch();
   const handleLogOut = () => {
-    dispath(logOutThunk(isAuth));
+    if (isAuth) dispath(logOutThunk(isAuth));
 
     navigate('/login');
   };

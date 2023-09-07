@@ -18,6 +18,9 @@ const handleLogin = (state, action) => {
   state.access_token = action.payload.token;
   state.user = action.payload.user;
 };
+const handleRefresh = (state, action) => {
+  state.user = action.payload;
+};
 const handleSignUp = (state, action) => {
   state.access_token = action.payload.token;
   state.user = action.payload.user;
@@ -43,7 +46,8 @@ export const authSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      // .addCase(refreshThunk.fulfilled, handleLogin)
+
+      .addCase(refreshThunk.fulfilled, handleRefresh)
       .addCase(loginThunk.fulfilled, handleLogin)
       .addCase(signUpThunk.fulfilled, handleSignUp)
       .addCase(logOutThunk.fulfilled, handlelogOut)

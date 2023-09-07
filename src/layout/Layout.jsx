@@ -6,11 +6,14 @@ import { refreshThunk } from 'redux/auth/authThunk';
 import { tokenSelector } from 'redux/selector';
 
 const Layout = () => {
-  // const isAuth = useSelector(tokenSelector);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(refreshThunk(isAuth));
-  // }, [dispatch, isAuth]);
+  const refToken = localStorage.getItem('token');
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (refToken) {
+      dispatch(refreshThunk(refToken));
+    }
+  }, [dispatch, refToken]);
   return (
     <div>
       <Header />

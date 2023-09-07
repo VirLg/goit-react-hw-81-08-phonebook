@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const setToken = token => {
-  console.log('token', token);
   localStorage.setItem('token', token);
   return (instance.defaults.headers.common[
     'Authorization'
@@ -13,11 +12,13 @@ export const delToken = () =>
 const instance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
 });
-export const refresh = async () => {
-  // const token = localStorage.getItem('token');
-  // setToken(token);
+export const refresh = async tok => {
+  const token = localStorage.getItem('token');
+  setToken(token);
+  console.log('tok', tok);
   const { data } = await instance('/users/current');
   // setToken(data.token);
+  console.log('data', data);
   return data;
 };
 export const login = async body => {
