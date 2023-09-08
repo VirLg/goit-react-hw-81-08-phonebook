@@ -6,4 +6,5 @@ export const reducer = {
   contactFilter: sortSlice.reducer,
   contactApi: contactApiSlice.reducer,
   auth: authSlice.reducer,
+  contactArrSwager: contactApiSlice.reducer,
 };

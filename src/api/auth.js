@@ -9,7 +9,7 @@ const setToken = token => {
 export const delToken = () =>
   delete instance.defaults.headers.common['Authorization'];
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
 });
 export const refresh = async tok => {
