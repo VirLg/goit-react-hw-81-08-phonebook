@@ -7,7 +7,7 @@ const initialState = {
 };
 const handleSwagerFulfilled = (state, action) => {
   state.isLoading = false;
-  state.contactArrSwager = [...state.contactArrSwager, action.payload];
+  state.contactArrSwager = action.payload.data;
 };
 const handlePending = state => {
   state.isLoading = true;

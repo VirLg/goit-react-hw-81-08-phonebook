@@ -1,10 +1,26 @@
+import { nanoid } from '@reduxjs/toolkit';
 import Contact from 'components/Contact/Contact';
 import Filter from 'components/Filter/Filter';
 import React from 'react';
-import { Form } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import Form from 'components/Form/Form';
+import { addNewContactThunk } from 'redux/thunks/thunks';
 
 const ContactPage = () => {
-  const addNewContact = () => {};
+  const dispatch = useDispatch();
+  const addNewContact = props => {
+    console.log('props', props);
+    const { name, number } = props;
+    // if (contactApi) {
+    //   const check = contactApi.contactsApi.find(
+    //     el => el.name.toLowerCase() === name.toLowerCase()
+    //   );
+    //   if (check) {
+    //     return alert('NoNoNo');
+    //   }
+
+    dispatch(addNewContactThunk({ name, number }));
+  };
 
   return (
     <div

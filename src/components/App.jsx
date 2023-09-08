@@ -24,19 +24,19 @@ const App = function () {
     dispatch(contactsThunk());
   }, [dispatch]);
 
-  const addContact = props => {
-    const { name, number } = props;
-    if (contactApi) {
-      const check = contactApi.contactsApi.find(
-        el => el.name.toLowerCase() === name.toLowerCase()
-      );
-      if (check) {
-        return alert('NoNoNo');
-      }
+  // const addContact = props => {
+  //   const { name, number } = props;
+  //   if (contactApi) {
+  //     const check = contactApi.contactsApi.find(
+  //       el => el.name.toLowerCase() === name.toLowerCase()
+  //     );
+  //     if (check) {
+  //       return alert('NoNoNo');
+  //     }
 
-      dispatch(contactsAddThunk({ name, number, id: nanoid() }));
-    }
-  };
+  //     dispatch(contactsAddThunk({ name, number, id: nanoid() }));
+  //   }
+  // };
   const filterArrContact = useSelector(myFilterSelector);
 
   const filterContact = e => {
@@ -58,7 +58,7 @@ const App = function () {
     >
       {isLoading && <h2>Loading...</h2>}
       {error ? error.message : <Contact />}
-      <Form addContact={addContact} />
+      {/* <Form addContact={addContact} /> */}
       <Filter filterContact={filterContact} />
       <Contact filterArrContact={filterArrContact} />
       <Routes>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Form = function ({ addContact, addNewContact }) {
+const Form = function ({ addNewContact }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -12,7 +12,7 @@ const Form = function ({ addContact, addNewContact }) {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    addContact({ name, number });
+
     addNewContact({ name, number });
     setName('');
     setNumber('');

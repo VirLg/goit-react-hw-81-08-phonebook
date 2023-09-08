@@ -1,5 +1,8 @@
+import { addNewContactSwager } from 'api/apiSwager';
+
+// import { addNewContactSwager } from 'api/auth';
+
 const { createAsyncThunk } = require('@reduxjs/toolkit');
-const { addNewContactSwager } = require('api/auth');
 
 export const addNewContactThunk = createAsyncThunk(
   'add/swager',
@@ -11,3 +14,4 @@ export const addNewContactThunk = createAsyncThunk(
     }
   }
 );
+const getContactSwager = createAsyncThunk('get/swager', () => {});
