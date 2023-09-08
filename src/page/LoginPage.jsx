@@ -1,4 +1,3 @@
-import { login } from 'api/auth';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -27,22 +26,30 @@ const LoginPage = () => {
     // return navigate('/login');
   }, [isAuth, navigate]);
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email
-        <input onChange={handleChange} value={email} type="text" name="email" />
-      </label>
-      <label>
-        Password
-        <input
-          onChange={handleChange}
-          value={password}
-          type="text"
-          name="password"
-        />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+    <div>
+      <button onClick={() => navigate('/')}>{'<'}</button>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Email
+          <input
+            onChange={handleChange}
+            value={email}
+            type="text"
+            name="email"
+          />
+        </label>
+        <label>
+          Password
+          <input
+            onChange={handleChange}
+            value={password}
+            type="text"
+            name="password"
+          />
+        </label>
+        <button type="submit">Log In</button>
+      </form>
+    </div>
   );
 };
 

@@ -20,6 +20,7 @@ const Header = () => {
     <div>
       <h3>{userNameAuth && userNameAuth.name}</h3>
       <NavLink to="/">Home Page</NavLink>
+      <NavLink to="/contact"> Contact</NavLink>
       <button onClick={handleLogOut}>{isAuth ? 'Log Out' : 'Log In'}</button>
       <Link to="/signUp">SignUp</Link>
     </div>
