@@ -30,7 +30,6 @@ const handlelogOut = (state, action) => {
   state.error = '';
   state.access_token = '';
   state.user = null;
-  delToken();
 };
 
 const handleRejected = (state, action) => {
@@ -43,7 +42,9 @@ const handlePending = state => {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    token: (state, action) => ({ ...state, access_token: action.payload }),
+  },
   extraReducers: builder => {
     builder
 
@@ -60,3 +61,4 @@ export const authSlice = createSlice({
   },
 });
 export default authSlice.reducer;
+export const { token } = authSlice.actions;
