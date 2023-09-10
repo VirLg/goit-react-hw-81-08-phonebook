@@ -4,6 +4,7 @@ import Form from 'components/Form/Form';
 import { addNewContactThunk, getContactThunk } from 'redux/thunks/thunks';
 import { tokenSelector } from 'redux/selector';
 import Filter from 'components/Filter/Filter';
+import Contact from 'components/Contact/Contact';
 
 const ContactPage = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,11 @@ const ContactPage = () => {
     dispatch(getContactThunk(isAuth));
   }, [dispatch, isAuth]);
   const filterContact = e => {
-    console.log('e', e.target.value);
+    // if (e.target.value) {
+    //   dispatch(filter(e.target.value));
+    // } else {
+    //   dispatch(filter(''));
+    // }
   };
   return (
     <div
@@ -42,7 +47,7 @@ const ContactPage = () => {
       {error ? error.message : <Contact />} */}
       <Form addNewContact={addNewContact} />
       <Filter filterContact={filterContact} />
-      {/* <Contact filterArrContact={filterArrContact} /> */}
+      <Contact />
     </div>
   );
 };

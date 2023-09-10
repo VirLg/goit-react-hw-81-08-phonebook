@@ -1,11 +1,9 @@
 import { nanoid } from 'nanoid';
-import Contact from './Contact/Contact';
-import Filter from './Filter/Filter';
-import Form from './Form/Form';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { filter } from '../redux/sliceFilter';
+
 import { myContactSelector, myFilterSelector } from 'redux/selector';
-import { useEffect } from 'react';
+
 import { contactsAddThunk, contactsThunk } from 'redux/thunk';
 import { Route, Routes } from 'react-router-dom';
 import Layout from 'layout/Layout';
@@ -37,15 +35,7 @@ const App = function () {
   //     dispatch(contactsAddThunk({ name, number, id: nanoid() }));
   //   }
   // };
-  // const filterArrContact = useSelector(myFilterSelector);
 
-  const filterContact = e => {
-    // if (e.target.value) {
-    //   dispatch(filter(e.target.value));
-    // } else {
-    //   dispatch(filter(''));
-    // }
-  };
   return (
     <div
       style={{

@@ -5,3 +5,5 @@ export const myFilterSelector = state =>
   );
 export const tokenSelector = state => state.auth.access_token;
 export const userSelector = state => state.auth.user;
+export const contactArrSelector = state =>
+  state.contactArrSwager.contactArrSwager;
