@@ -12,6 +12,7 @@ const ContactPage = () => {
   const [filter, setFilter] = useState('');
   const addNewContact = props => {
     console.log('props', props);
+
     const { name, number } = props;
     // if (contactApi) {
     //   const check = contactApi.contactsApi.find(
@@ -26,15 +27,9 @@ const ContactPage = () => {
   useEffect(() => {
     dispatch(getContactThunk(isAuth));
   }, [dispatch, isAuth]);
-  const filterContact = evt => {
-    setFilter(evt.target.value);
-    return evt;
-    // if (e.target.value) {
-    //   dispatch(filter(e.target.value));
-    // } else {
-    //   dispatch(filter(''));
-    // }
-  };
+
+  const filterContact = evt => setFilter(evt.target.value);
+
   return (
     <div
       style={{

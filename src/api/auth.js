@@ -40,3 +40,6 @@ export const getContactSwager = async () => {
   const data = await instance('/contacts');
   return data;
 };
+export const deleteContactSwager = id => {
+  instance.delete(`/contacts/${id}`);
+};

@@ -1,5 +1,3 @@
-// import { addNewContactSwager, getContactSwager } from 'api/apiSwager';
-
 import { addNewContactSwager, getContactSwager } from 'api/auth';
 
 const { createAsyncThunk } = require('@reduxjs/toolkit');

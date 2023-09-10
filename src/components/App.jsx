@@ -11,7 +11,7 @@ import PrivateRoute from './guards/PrivateRoute';
 import ContactPage from 'page/ContactPage';
 
 const App = function () {
-  const { contactApi } = useSelector(myContactSelector);
+  // const { contactApi } = useSelector(myContactSelector);
   const dispatch = useDispatch();
   // const { isLoading, error } = useSelector(state => state.contactApi);
   // useEffect(() => {
