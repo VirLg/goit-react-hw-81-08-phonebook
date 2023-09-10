@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Form from 'components/Form/Form';
 import { addNewContactThunk, getContactThunk } from 'redux/thunks/thunks';
@@ -9,6 +9,7 @@ import Contact from 'components/Contact/Contact';
 const ContactPage = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(tokenSelector);
+  const [filter, setFilter] = useState('');
   const addNewContact = props => {
     console.log('props', props);
     const { name, number } = props;
@@ -25,7 +26,9 @@ const ContactPage = () => {
   useEffect(() => {
     dispatch(getContactThunk(isAuth));
   }, [dispatch, isAuth]);
-  const filterContact = e => {
+  const filterContact = evt => {
+    setFilter(evt.target.value);
+    return evt;
     // if (e.target.value) {
     //   dispatch(filter(e.target.value));
     // } else {
@@ -47,7 +50,7 @@ const ContactPage = () => {
       {error ? error.message : <Contact />} */}
       <Form addNewContact={addNewContact} />
       <Filter filterContact={filterContact} />
-      <Contact />
+      <Contact filter={filter} />
     </div>
   );
 };

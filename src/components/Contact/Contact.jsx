@@ -5,16 +5,17 @@ import { ContactsDiv, Button } from './Contacts.styled';
 
 import { contactsDeleteThunk } from 'redux/thunk';
 import { contactArrSelector } from 'redux/selector';
-const Contact = ({ filterArrContact }) => {
+const Contact = ({ filter }) => {
   const contactArr = useSelector(contactArrSelector);
-  useEffect(() => {
-    console.log('contactArr', contactArr);
-  }, [contactArr]);
+  const visible = contactArr.filter(e =>
+    e.name.toLowerCase().includes(filter.toLowerCase())
+  );
+  console.log('prop', visible);
 
   const dispatch = useDispatch();
   return (
     contactArr &&
-    contactArr.map(({ number, name, id }) => {
+    visible.map(({ number, name, id }) => {
       return (
         <ContactsDiv key={id}>
           <h-
