@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ContactsDiv, Button } from './Contacts.styled';
 
-import { contactsDeleteThunk } from 'redux/thunk';
 import { contactArrSelector } from 'redux/selector';
 import { deleteContactSwager } from 'api/auth';
 const Contact = ({ filter }) => {
