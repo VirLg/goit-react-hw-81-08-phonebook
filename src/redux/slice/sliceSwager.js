@@ -1,13 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addNewContactThunk } from 'redux/thunks/thunks';
+import { addNewContactThunk, getContactThunk } from 'redux/thunks/thunks';
 const initialState = {
   contactArrSwager: [],
   isLoading: false,
   error: '',
 };
-const handleSwagerFulfilled = (state, action) => {
+const handleAddContactSwagerFulfilled = (state, action) => {
+  console.log('action', action);
   state.isLoading = false;
-  state.contactArrSwager = action.payload.data;
+  state.contactArrSwager.push(action.payload);
+};
+const handleGetContactSwagerFulfilled = (state, action) => {
+  // console.log('first', action.payload);
+  // state.isLoading = false;
+  // state.contactArrSwager = action.payload;
 };
 const handlePending = state => {
   state.isLoading = true;
@@ -22,9 +28,9 @@ export const contactApiSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(addNewContactThunk.fulfilled, handleSwagerFulfilled)
-      .addCase(contactsDeleteThunk.fulfilled, handleDeleteFulfielled)
-      .addCase(contactsAddThunk.fulfilled, handleAddFulfielled)
+      .addCase(addNewContactThunk.fulfilled, handleAddContactSwagerFulfilled)
+      .addCase(getContactThunk.fulfilled, handleGetContactSwagerFulfilled)
+      // .addCase(contactsAddThunk.fulfilled, handleAddFulfielled)
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },

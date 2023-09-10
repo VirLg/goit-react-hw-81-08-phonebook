@@ -1,10 +1,12 @@
 import axios from 'axios';
 
 const setToken = token => {
+  console.log('token', token);
+  // const token = localStorage.getItem('token');
   localStorage.setItem('token', token);
-  return (instance.defaults.headers.common[
-    'Authorization'
-  ] = `Bearer ${token}`);
+  const a = localStorage.getItem('token');
+
+  return (instance.defaults.headers.common['Authorization'] = `Bearer ${a}`);
 };
 export const delToken = () =>
   delete instance.defaults.headers.common['Authorization'];
@@ -12,13 +14,15 @@ export const delToken = () =>
 export const instance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
 });
-export const refresh = async tok => {
-  const token = localStorage.getItem('token');
-  setToken(token);
-  console.log('tok', tok);
+export const refresh = async token => {
+  console.log('token', token);
+  localStorage.setItem('token', token);
+
+  const b = setToken(token);
+  console.log('b', b);
   const { data } = await instance('/users/current');
-  // setToken(data.token);
   console.log('data', data);
+
   return data;
 };
 export const login = async body => {
@@ -32,5 +36,13 @@ export const signUp = async body => {
   return data;
 };
 export const logOut = async () => {
-  return await instance.post('/users/logout');
+  // return await instance.post('/users/logout');
+};
+export const addNewContactSwager = async body => {
+  const data = await instance.post('/contacts', body);
+  if (!data) return new Error('some');
+};
+export const getContactSwager = async () => {
+  const data = await instance('/contacts');
+  if (!data) return new Error('some');
 };

@@ -18,8 +18,7 @@ export const ApiDelete = id => {
 };
 
 export const ApiAdd = value => {
-  const data = axios.post(`contacts`, value);
-  if (!data) return new Error('some');
-
-  return data;
+  // const data = axios.post(`contacts`, value);
+  // if (!data) return new Error('some');
+  // return data;
 };

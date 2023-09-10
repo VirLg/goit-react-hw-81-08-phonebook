@@ -1,10 +1,10 @@
 import { nanoid } from '@reduxjs/toolkit';
 import Contact from 'components/Contact/Contact';
 import Filter from 'components/Filter/Filter';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Form from 'components/Form/Form';
-import { addNewContactThunk } from 'redux/thunks/thunks';
+import { addNewContactThunk, getContactThunk } from 'redux/thunks/thunks';
 
 const ContactPage = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,9 @@ const ContactPage = () => {
 
     dispatch(addNewContactThunk({ name, number }));
   };
-
+  useEffect(() => {
+    dispatch(getContactThunk());
+  }, [dispatch]);
   return (
     <div
       style={{

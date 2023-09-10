@@ -1,6 +1,6 @@
-import { addNewContactSwager } from 'api/apiSwager';
+// import { addNewContactSwager, getContactSwager } from 'api/apiSwager';
 
-// import { addNewContactSwager } from 'api/auth';
+import { addNewContactSwager, getContactSwager } from 'api/auth';
 
 const { createAsyncThunk } = require('@reduxjs/toolkit');
 
@@ -14,4 +14,13 @@ export const addNewContactThunk = createAsyncThunk(
     }
   }
 );
-const getContactSwager = createAsyncThunk('get/swager', () => {});
+export const getContactThunk = createAsyncThunk(
+  'get/swager',
+  (state, thunkApi) => {
+    try {
+      return getContactSwager(state);
+    } catch (e) {
+      return thunkApi.rejectWithValue(e.message);
+    }
+  }
+);

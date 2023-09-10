@@ -19,10 +19,10 @@ import ContactPage from 'page/ContactPage';
 const App = function () {
   const { contactApi } = useSelector(myContactSelector);
   const dispatch = useDispatch();
-  const { isLoading, error } = useSelector(state => state.contactApi);
-  useEffect(() => {
-    dispatch(contactsThunk());
-  }, [dispatch]);
+  // const { isLoading, error } = useSelector(state => state.contactApi);
+  // useEffect(() => {
+  //   dispatch(contactsThunk());
+  // }, [dispatch]);
 
   // const addContact = props => {
   //   const { name, number } = props;
@@ -37,14 +37,14 @@ const App = function () {
   //     dispatch(contactsAddThunk({ name, number, id: nanoid() }));
   //   }
   // };
-  const filterArrContact = useSelector(myFilterSelector);
+  // const filterArrContact = useSelector(myFilterSelector);
 
   const filterContact = e => {
-    if (e.target.value) {
-      dispatch(filter(e.target.value));
-    } else {
-      dispatch(filter(''));
-    }
+    // if (e.target.value) {
+    //   dispatch(filter(e.target.value));
+    // } else {
+    //   dispatch(filter(''));
+    // }
   };
   return (
     <div
@@ -56,11 +56,11 @@ const App = function () {
         color: '#010101',
       }}
     >
-      {isLoading && <h2>Loading...</h2>}
-      {error ? error.message : <Contact />}
+      {/* {isLoading && <h2>Loading...</h2>}
+      {error ? error.message : <Contact />} */}
       {/* <Form addContact={addContact} /> */}
-      <Filter filterContact={filterContact} />
-      <Contact filterArrContact={filterArrContact} />
+      {/* <Filter filterContact={filterContact} /> */}
+      {/* <Contact filterArrContact={filterArrContact} /> */}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />

@@ -1,47 +1,47 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { contactsAddThunk, contactsDeleteThunk, contactsThunk } from './thunk';
+// import { createSlice } from '@reduxjs/toolkit';
+// import { contactsAddThunk, contactsDeleteThunk, contactsThunk } from './thunk';
 
-const initialState = {
-  contactsApi: [],
-  isLoading: false,
-  error: '',
-};
+// const initialState = {
+//   contactsApi: [],
+//   isLoading: false,
+//   error: '',
+// };
 
-const handlePending = state => {
-  state.isLoading = true;
-};
-const handleFulfilled = (state, action) => {
-  state.isLoading = false;
-  state.contactsApi = action.payload.data;
-  state.error = '';
-};
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
-export const handleDeleteFulfielled = (state, { payload }) => {
-  state.contactsApi = state.contactsApi.filter(el => el.id !== payload.data.id);
-};
+// const handlePending = state => {
+//   state.isLoading = true;
+// };
+// const handleFulfilled = (state, action) => {
+//   // state.isLoading = false;
+//   // state.contactsApi = action.payload.data;
+//   // state.error = '';
+// };
+// const handleRejected = (state, action) => {
+//   state.isLoading = false;
+//   state.error = action.payload;
+// };
+// export const handleDeleteFulfielled = (state, { payload }) => {
+//   state.contactsApi = state.contactsApi.filter(el => el.id !== payload.data.id);
+// };
 
-export const handleAddFulfielled = (state, action) => {
-  state.contactsApi = [...state.contactsApi, action.payload.data];
-};
+// export const handleAddFulfielled = (state, action) => {
+//   state.contactsApi = [...state.contactsApi, action.payload.data];
+// };
 
-export const contactApiSlice = createSlice({
-  name: 'contactApi',
-  initialState,
-  extraReducers: builder => {
-    builder
-      .addCase(contactsThunk.fulfilled, handleFulfilled)
-      .addCase(contactsDeleteThunk.fulfilled, handleDeleteFulfielled)
-      .addCase(contactsAddThunk.fulfilled, handleAddFulfielled)
-      .addMatcher(action => action.type.endsWith('/pending'), handlePending)
-      .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
-  },
-});
+// export const contactApiSlice = createSlice({
+//   name: 'contactApi',
+//   initialState,
+//   extraReducers: builder => {
+//     builder
+//       .addCase(contactsThunk.fulfilled, handleFulfilled)
+//       .addCase(contactsDeleteThunk.fulfilled, handleDeleteFulfielled)
+//       .addCase(contactsAddThunk.fulfilled, handleAddFulfielled)
+//       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
+//       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
+//   },
+// });
 
-export default contactApiSlice.reducer;
-export const { push } = contactApiSlice.actions;
+// export default contactApiSlice.reducer;
+// export const { push } = contactApiSlice.actions;
 
 // не свариться) залишив для себе))
 // ----------------------------------------------

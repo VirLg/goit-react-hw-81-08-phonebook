@@ -70,8 +70,8 @@ const Form = function ({ addNewContact }) {
   );
 };
 
-Form.propTypes = {
-  addContact: PropTypes.func.isRequired,
-};
+// Form.propTypes = {
+//   addContact: PropTypes.func.isRequired,
+// };
 
 export default Form;

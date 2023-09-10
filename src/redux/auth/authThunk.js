@@ -3,7 +3,10 @@ import { logOut, login, refresh, signUp } from 'api/auth';
 
 export const refreshThunk = createAsyncThunk(
   'auth/refresh',
-  token => refresh(token)
+  token => {
+    console.log('token', token);
+    refresh(token);
+  }
 
   // async (token, rejectWithValue) => {
   // console.log('token', token);
