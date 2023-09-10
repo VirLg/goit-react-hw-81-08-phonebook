@@ -11,9 +11,8 @@ const handleAddContactSwagerFulfilled = (state, action) => {
   state.contactArrSwager.push(action.payload);
 };
 const handleGetContactSwagerFulfilled = (state, action) => {
-  // console.log('first', action.payload);
-  // state.isLoading = false;
-  // state.contactArrSwager = action.payload;
+  state.isLoading = false;
+  state.contactArrSwager = action.payload.data;
 };
 const handlePending = state => {
   state.isLoading = true;

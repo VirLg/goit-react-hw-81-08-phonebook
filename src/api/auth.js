@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const setToken = token => {
-  console.log('token', token);
   // const token = localStorage.getItem('token');
   localStorage.setItem('token', token);
   const a = localStorage.getItem('token');
@@ -15,7 +14,6 @@ export const instance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
 });
 export const refresh = async token => {
-  console.log('token', token);
   localStorage.setItem('token', token);
 
   const b = setToken(token);
@@ -44,5 +42,7 @@ export const addNewContactSwager = async body => {
 };
 export const getContactSwager = async () => {
   const data = await instance('/contacts');
-  if (!data) return new Error('some');
+  console.log('dataCo', data);
+
+  return data;
 };

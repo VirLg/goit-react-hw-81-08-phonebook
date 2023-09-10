@@ -16,9 +16,9 @@ export const addNewContactThunk = createAsyncThunk(
 );
 export const getContactThunk = createAsyncThunk(
   'get/swager',
-  (state, thunkApi) => {
+  ({ data }, thunkApi) => {
     try {
-      return getContactSwager(state);
+      return getContactSwager(data);
     } catch (e) {
       return thunkApi.rejectWithValue(e.message);
     }
