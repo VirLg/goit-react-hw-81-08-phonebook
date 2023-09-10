@@ -1,11 +1,9 @@
-import { nanoid } from '@reduxjs/toolkit';
-import Contact from 'components/Contact/Contact';
-import Filter from 'components/Filter/Filter';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Form from 'components/Form/Form';
 import { addNewContactThunk, getContactThunk } from 'redux/thunks/thunks';
 import { tokenSelector } from 'redux/selector';
+import Filter from 'components/Filter/Filter';
 
 const ContactPage = () => {
   const dispatch = useDispatch();
@@ -26,6 +24,9 @@ const ContactPage = () => {
   useEffect(() => {
     dispatch(getContactThunk(isAuth));
   }, [dispatch, isAuth]);
+  const filterContact = e => {
+    console.log('e', e.target.value);
+  };
   return (
     <div
       style={{
@@ -40,8 +41,8 @@ const ContactPage = () => {
       {/* {isLoading && <h2>Loading...</h2>}
       {error ? error.message : <Contact />} */}
       <Form addNewContact={addNewContact} />
-      {/* <Filter filterContact={filterContact} />
-      <Contact filterArrContact={filterArrContact} /> */}
+      <Filter filterContact={filterContact} />
+      {/* <Contact filterArrContact={filterArrContact} /> */}
     </div>
   );
 };

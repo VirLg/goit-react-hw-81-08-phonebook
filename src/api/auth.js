@@ -15,12 +15,8 @@ export const instance = axios.create({
 });
 export const refresh = async token => {
   localStorage.setItem('token', token);
-
-  const b = setToken(token);
-  console.log('b', b);
+  setToken(token);
   const { data } = await instance('/users/current');
-  console.log('data', data);
-
   return data;
 };
 export const login = async body => {
@@ -42,7 +38,5 @@ export const addNewContactSwager = async body => {
 };
 export const getContactSwager = async () => {
   const data = await instance('/contacts');
-  console.log('dataCo', data);
-
   return data;
 };

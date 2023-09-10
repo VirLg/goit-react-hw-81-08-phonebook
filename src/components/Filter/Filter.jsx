@@ -23,8 +23,6 @@ const Filter = ({ filterContact }) => {
   );
 };
 
-
-
 export default Filter;
 Filter.propTypes = {
   filterContact: PropTypes.func.isRequired,
