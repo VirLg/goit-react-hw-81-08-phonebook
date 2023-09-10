@@ -1,9 +1,5 @@
-import { nanoid } from 'nanoid';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import { myContactSelector, myFilterSelector } from 'redux/selector';
-
 import { contactsAddThunk, contactsThunk } from 'redux/thunk';
 import { Route, Routes } from 'react-router-dom';
 import Layout from 'layout/Layout';

@@ -10,7 +10,6 @@ const Contact = ({ filter }) => {
   const visible = contactArr.filter(e =>
     e.name.toLowerCase().includes(filter.toLowerCase())
   );
-  console.log('prop', visible);
 
   const dispatch = useDispatch();
   return (
