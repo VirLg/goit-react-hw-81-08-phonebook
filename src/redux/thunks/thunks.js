@@ -4,9 +4,10 @@ const { createAsyncThunk } = require('@reduxjs/toolkit');
 
 export const addNewContactThunk = createAsyncThunk(
   'add/swager',
-  (state, thunkApi) => {
+  ({ value }, thunkApi) => {
     try {
-      return addNewContactSwager(state);
+      console.log('value', value);
+      return addNewContactSwager(value);
     } catch (e) {
       return thunkApi.rejectWithValue(e.message);
     }

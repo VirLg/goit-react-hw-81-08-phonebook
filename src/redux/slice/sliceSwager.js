@@ -5,15 +5,16 @@ const initialState = {
   isLoading: false,
   error: '',
 };
-const handleAddContactSwagerFulfilled = (state, action) => {
-  console.log('action', action);
-  state.isLoading = false;
-  state.contactArrSwager.push(action.payload);
-};
+// const handleAddContactSwagerFulfilled = (state, action) => {
+//   console.log('action', action);
+//   state.isLoading = false;
+//   state.contactArrSwager.push(action.payload);
+// };
 const handleGetContactSwagerFulfilled = (state, action) => {
   state.isLoading = false;
   state.contactArrSwager = action.payload.data;
 };
+
 const handlePending = state => {
   state.isLoading = true;
   state.error = '';
@@ -27,9 +28,9 @@ export const contactApiSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(addNewContactThunk.fulfilled, handleAddContactSwagerFulfilled)
+      // .addCase(addNewContactThunk.fulfilled, handleAddContactSwagerFulfilled)
       .addCase(getContactThunk.fulfilled, handleGetContactSwagerFulfilled)
-      // .addCase(contactsAddThunk.fulfilled, handleAddFulfielled)
+      // .addCase(addNewContactThunk.fulfilled, handleAddContactSwaggerFulfielled)
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },

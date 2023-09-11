@@ -2,27 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Form from 'components/Form/Form';
 import { addNewContactThunk, getContactThunk } from 'redux/thunks/thunks';
-import { tokenSelector } from 'redux/selector';
+import { contactArrSelector, tokenSelector } from 'redux/selector';
 import Filter from 'components/Filter/Filter';
 import Contact from 'components/Contact/Contact';
+import { addNewContactSwager } from 'api/auth';
 
 const ContactPage = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(tokenSelector);
   const [filter, setFilter] = useState('');
+  const contactArr = useSelector(contactArrSelector);
   const addNewContact = props => {
-    console.log('props', props);
-
     const { name, number } = props;
-    // if (contactApi) {
-    //   const check = contactApi.contactsApi.find(
-    //     el => el.name.toLowerCase() === name.toLowerCase()
-    //   );
-    //   if (check) {
-    //     return alert('NoNoNo');
-    //   }
 
-    dispatch(addNewContactThunk({ name, number }));
+    if (contactArr) {
+      const check = contactArr.find(
+        el => el.name.toLowerCase() === name.toLowerCase()
+      );
+
+      if (check) {
+        return alert('NoNoNo');
+      }
+
+      addNewContactSwager({ name, number });
+      // dispatch(addNewContactThunk({ name, number }));
+    }
   };
   useEffect(() => {
     dispatch(getContactThunk(isAuth));
