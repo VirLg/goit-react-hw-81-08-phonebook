@@ -5,7 +5,6 @@ import {
   refreshThunk,
   signUpThunk,
 } from './authThunk';
-import { delToken } from 'api/auth';
 
 const initialState = {
   access_token: '',

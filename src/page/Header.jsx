@@ -1,7 +1,7 @@
 import { delToken } from 'api/auth';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { logOutThunk } from 'redux/auth/authThunk';
 import { tokenSelector, userSelector } from 'redux/selector';
 

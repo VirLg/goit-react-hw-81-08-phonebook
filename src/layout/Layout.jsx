@@ -1,10 +1,9 @@
 import Header from 'page/Header';
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { token } from 'redux/auth/authSlice';
 import { refreshThunk } from 'redux/auth/authThunk';
-import { tokenSelector } from 'redux/selector';
 
 const Layout = () => {
   const refToken = localStorage.getItem('token');
