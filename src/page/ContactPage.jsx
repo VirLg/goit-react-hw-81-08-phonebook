@@ -25,6 +25,7 @@ const ContactPage = () => {
       }
 
       addNewContactSwager({ name, number });
+      dispatch(getContactThunk(isAuth));
       // dispatch(addNewContactThunk({ name, number }));
     }
   };

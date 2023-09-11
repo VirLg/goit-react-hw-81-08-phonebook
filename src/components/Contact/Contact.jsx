@@ -3,18 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ContactsDiv, Button } from './Contacts.styled';
 
-import { contactArrSelector } from 'redux/selector';
+import { contactArrSelector, tokenSelector } from 'redux/selector';
 import { deleteContactSwager } from 'api/auth';
+import { getContactThunk } from 'redux/thunks/thunks';
 const Contact = ({ filter }) => {
   const contactArr = useSelector(contactArrSelector);
-
+  const isAuth = useSelector(tokenSelector);
+  const dispatch = useDispatch();
   const visible = contactArr.filter(e =>
     e.name.toLowerCase().includes(filter.toLowerCase())
   );
+
   const handleDelete = id => {
     deleteContactSwager(id);
+    dispatch(getContactThunk(isAuth));
   };
-  const dispatch = useDispatch();
   return (
     contactArr &&
     visible.map(({ number, name, id }) => {
