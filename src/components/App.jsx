@@ -6,8 +6,12 @@ import SingUpPage from 'page/SingUpPage';
 import PublicRoute from './guards/PublicRoute';
 import PrivateRoute from './guards/PrivateRoute';
 import ContactPage from 'page/ContactPage';
+import { errorSelector, isLoadingSelector } from 'redux/selector';
+import { useSelector } from 'react-redux';
 
 const App = function () {
+  const isLoading = useSelector(isLoadingSelector);
+  const error = useSelector(errorSelector);
   return (
     <div
       style={{
@@ -18,8 +22,8 @@ const App = function () {
         color: '#010101',
       }}
     >
-      {/* {isLoading && <h2>Loading...</h2>}
-      {error ? error.message : <Contact />} */}
+      {isLoading && <h2>Loading...</h2>}
+      {error && <h2>{error}</h2>}
 
       <Routes>
         <Route path="/" element={<Layout />}>

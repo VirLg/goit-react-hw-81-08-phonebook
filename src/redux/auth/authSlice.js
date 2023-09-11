@@ -29,16 +29,16 @@ const handleSignUp = (state, action) => {
 };
 const handlelogOut = (state, action) => {
   state.isLoading = false;
-  state.error = '';
   state.access_token = '';
   state.user = null;
 };
 
-const handleRejected = (state, action) => {
+const handleRejected = (state, { error }) => {
   state.isLoading = false;
-  state.error = action.payload;
+  state.error = error.message;
 };
 const handlePending = state => {
+  state.error = '';
   state.isLoading = true;
 };
 export const authSlice = createSlice({

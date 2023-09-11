@@ -1,8 +1,5 @@
-// export const myContactSelector = state => state;
-// export const myFilterSelector = state =>
-//   state.contactApi.contactsApi.filter(el =>
-//     el.name.toLowerCase().includes(state.contactFilter.toLowerCase())
-//   );
+export const isLoadingSelector = state => state.auth.isLoading;
+export const errorSelector = state => state.auth.error;
 export const tokenSelector = state => state.auth.access_token;
 export const userSelector = state => state.auth.user;
 export const contactArrSelector = state =>

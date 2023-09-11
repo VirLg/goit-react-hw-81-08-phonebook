@@ -22,8 +22,6 @@ const LoginPage = () => {
   };
   useEffect(() => {
     if (isAuth) return navigate('/');
-
-    // return navigate('/login');
   }, [isAuth, navigate]);
   return (
     <div>
