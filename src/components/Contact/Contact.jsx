@@ -7,6 +7,7 @@ import { contactArrSelector } from 'redux/selector';
 import { deleteContactSwager } from 'api/auth';
 const Contact = ({ filter }) => {
   const contactArr = useSelector(contactArrSelector);
+
   const visible = contactArr.filter(e =>
     e.name.toLowerCase().includes(filter.toLowerCase())
   );
