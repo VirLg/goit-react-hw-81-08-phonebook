@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { ContactsDiv, Button } from './Contacts.styled';
 
 import { contactArrSelector, tokenSelector } from 'redux/selector';
@@ -13,7 +13,6 @@ const Contact = ({ filter }) => {
   const visible = contactArr.filter(e =>
     e.name.toLowerCase().includes(filter.toLowerCase())
   );
-
   const handleDelete = id => {
     deleteContactSwager(id);
     dispatch(getContactThunk(isAuth));
