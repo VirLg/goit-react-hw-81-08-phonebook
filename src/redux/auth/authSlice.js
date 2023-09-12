@@ -39,7 +39,7 @@ const handleRejected = (state, { error }) => {
 };
 const handlePending = state => {
   state.error = '';
-  state.isLoading = true;
+  state.isLoading = false;
 };
 export const authSlice = createSlice({
   name: 'auth',

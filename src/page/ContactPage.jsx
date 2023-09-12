@@ -2,12 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Form from 'components/Form/Form';
 import { getContactThunk } from 'redux/thunks/thunks';
-import { contactArrSelector, tokenSelector } from 'redux/selector';
+import {
+  contactArrSelector,
+  errorSelector,
+  isLoadingSelector,
+  tokenSelector,
+} from 'redux/selector';
 import Filter from 'components/Filter/Filter';
 import Contact from 'components/Contact/Contact';
 import { addNewContactSwager } from 'api/auth';
 
 const ContactPage = () => {
+  const isLoading = useSelector(isLoadingSelector);
+  const error = useSelector(errorSelector);
   const dispatch = useDispatch();
   const isAuth = useSelector(tokenSelector);
   const [filter, setFilter] = useState('');
@@ -40,13 +47,18 @@ const ContactPage = () => {
       }}
     >
       <h4>contact</h4>
-      {/* {isLoading && <h2>Loading...</h2>}
-      {error ? error.message : <Contact />} */}
+      {error && <h2>{error}</h2>}
+      {isLoading && <h2>Loading...</h2>}
       <Form addNewContact={addNewContact} />
-      <Filter filterContact={filterContact} />
       <Contact filter={filter} />
+      <Filter filterContact={filterContact} />
     </div>
   );
 };
 
 export default ContactPage;
+// <>
+//   (<Form addNewContact={addNewContact} />
+//   <Filter filterContact={filterContact} />
+//   <Contact filter={filter} />)
+// </>;

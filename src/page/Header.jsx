@@ -1,3 +1,4 @@
+import { AppBar, Toolbar } from '@mui/material';
 import { delToken } from 'api/auth';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,13 +18,15 @@ const Header = () => {
     navigate('/login');
   };
   return (
-    <div>
-      <h3>{userNameAuth && userNameAuth.name}</h3>
-      <NavLink to="/">Home Page</NavLink>
-      <NavLink to="/contact"> Contact</NavLink>
-      <button onClick={handleLogOut}>{isAuth ? 'Log Out' : 'Log In'}</button>
-      <Link to="/signUp">SignUp</Link>
-    </div>
+    <AppBar position="static">
+      <Toolbar>
+        <h3>{userNameAuth && userNameAuth.name}</h3>
+        <NavLink to="/">Home Page</NavLink>
+        <NavLink to="/contact"> Contact</NavLink>
+        <button onClick={handleLogOut}>{isAuth ? 'Log Out' : 'Log In'}</button>
+        <Link to="/signUp">SignUp</Link>
+      </Toolbar>
+    </AppBar>
   );
 };
 
