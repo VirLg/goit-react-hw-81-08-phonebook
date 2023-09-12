@@ -46,12 +46,11 @@ const ContactPage = () => {
         color: '#010101',
       }}
     >
-      <h4>contact</h4>
       {error && <h2>{error}</h2>}
       {isLoading && <h2>Loading...</h2>}
       <Form addNewContact={addNewContact} />
-      <Contact filter={filter} />
       <Filter filterContact={filterContact} />
+      <Contact filter={filter} />
     </div>
   );
 };
