@@ -19,7 +19,7 @@ const FormSingnUp = ({ handleSubmit }) => {
   };
   return (
     <div>
-      <form className="container-form" onSubmit={formSubmit}>
+      <form onSubmit={formSubmit}>
         <TextField
           fullWidth
           label="Name"

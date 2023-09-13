@@ -49,8 +49,10 @@ const ContactPage = () => {
       {error && <h2>{error}</h2>}
       {isLoading && <h2>Loading...</h2>}
       <Form addNewContact={addNewContact} />
-      <Filter filterContact={filterContact} />
-      <Contact filter={filter} />
+      <div className="container-form">
+        <Filter filterContact={filterContact} />
+        <Contact filter={filter} />
+      </div>
     </div>
   );
 };
