@@ -6,6 +6,9 @@ import { ContactsDiv, Button } from './Contacts.styled';
 import { contactArrSelector, tokenSelector } from 'redux/selector';
 import { deleteContactSwager } from 'api/auth';
 import { getContactThunk } from 'redux/thunks/thunks';
+import { Card, CardActions, CardContent, Typography } from '@mui/material';
+
+import { Delete } from '@mui/icons-material';
 const Contact = ({ filter }) => {
   const contactArr = useSelector(contactArrSelector);
   const isAuth = useSelector(tokenSelector);
@@ -21,26 +24,26 @@ const Contact = ({ filter }) => {
     contactArr &&
     visible.map(({ number, name, id }) => {
       return (
-        <ContactsDiv key={id}>
-          <h-
-            style={{
-              fontSize: '20px',
-            }}
-          >
-            {name}
-          </h->
-          <h2
-            style={{
-              fontSize: '20px',
-              marginLeft: '20px',
-            }}
-          >
-            {number}
-          </h2>
-          <Button type="button" onClick={() => handleDelete(id)}>
-            Delete
-          </Button>
-        </ContactsDiv>
+        <Card
+          sx={{
+            maxWidth: 600,
+            outline: '1px solid teal',
+            mt: '1tem',
+            mb: '1rem',
+          }}
+        >
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              name: {name}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              number: {number}
+            </Typography>
+          </CardContent>
+          <CardActions disableSpacing>
+            <Button onClick={() => handleDelete(id)}>Delete</Button>
+          </CardActions>
+        </Card>
       );
     })
   );
