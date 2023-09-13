@@ -6,7 +6,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { logOutThunk } from 'redux/auth/authThunk';
 import { tokenSelector, userSelector } from 'redux/selector';
 import logo from 'logo.svg';
-import { Accessibility, Accessible } from '@mui/icons-material';
+import { Accessibility } from '@mui/icons-material';
 const Header = () => {
   const isAuth = useSelector(tokenSelector);
   const userNameAuth = useSelector(userSelector);

@@ -47,8 +47,6 @@ const FormSingnUp = ({ handleSubmit }) => {
           name="password"
           sx={{ mt: '1.5rem', mb: '1.5rem' }}
         />
-
-        <button type="submit">Sign Up</button>
       </form>
     </div>
   );

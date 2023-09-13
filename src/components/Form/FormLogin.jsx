@@ -14,7 +14,7 @@ const FormLogin = ({ handleSubmit }) => {
     handleSubmit({ email, password });
   };
   return (
-    <div className="container-form">
+    <div>
       <form onSubmit={formSubmit}>
         <TextField
           fullWidth
@@ -34,8 +34,6 @@ const FormLogin = ({ handleSubmit }) => {
           type="text"
           name="password"
         />
-
-        <button type="submit">Log In</button>
       </form>
     </div>
   );
