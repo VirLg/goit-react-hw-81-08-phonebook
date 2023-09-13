@@ -1,4 +1,5 @@
-import { TextField } from '@mui/material';
+import { Send } from '@mui/icons-material';
+import { Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 
 const FormSingnUp = ({ handleSubmit }) => {
@@ -47,6 +48,9 @@ const FormSingnUp = ({ handleSubmit }) => {
           name="password"
           sx={{ mt: '1.5rem', mb: '1.5rem' }}
         />
+        <Button variant="contained" endIcon={<Send />} type="submit">
+          Sign Up
+        </Button>
       </form>
     </div>
   );

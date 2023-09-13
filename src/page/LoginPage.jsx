@@ -26,9 +26,6 @@ const LoginPage = () => {
         onClick={() => navigate('/')}
       ></Button>
       <FormLogin handleSubmit={handleSubmit} />
-      <Button variant="contained" endIcon={<Send />} type="submit">
-        Log In
-      </Button>
     </div>
   );
 };

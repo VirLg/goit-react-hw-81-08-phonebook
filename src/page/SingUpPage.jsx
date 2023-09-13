@@ -23,9 +23,6 @@ const SignUpPage = () => {
         Log in
       </Button>
       <FormSingnUp handleSubmit={handleSubmit} />
-      <Button variant="contained" endIcon={<Send />} type="submit">
-        Sign Up
-      </Button>
     </div>
   );
 };

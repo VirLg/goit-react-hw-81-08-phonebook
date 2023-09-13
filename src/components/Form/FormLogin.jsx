@@ -1,4 +1,5 @@
-import { FormControl, InputLabel, TextField } from '@mui/material';
+import { Send } from '@mui/icons-material';
+import { Button, FormControl, InputLabel, TextField } from '@mui/material';
 import React, { useState } from 'react';
 
 const FormLogin = ({ handleSubmit }) => {
@@ -34,6 +35,9 @@ const FormLogin = ({ handleSubmit }) => {
           type="text"
           name="password"
         />
+        <Button variant="contained" endIcon={<Send />} type="submit">
+          Log In
+        </Button>
       </form>
     </div>
   );
