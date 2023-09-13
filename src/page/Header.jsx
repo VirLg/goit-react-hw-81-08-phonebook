@@ -25,12 +25,24 @@ const Header = () => {
         <NavLink to="/">
           <img src={logo} alt="the girl is studying" width={'60px'} />
         </NavLink>
-        <Typography variant="h3" sx={{ flexGrow: 1 }}>
-          <NavLink to="/contact"> Contact</NavLink>
+        <Typography variant="h4" sx={{ flexGrow: 1 }}>
+          <NavLink style={{ textDecoration: 'none' }} to="/contact">
+            Contact
+          </NavLink>
         </Typography>
         <>
-          <h3>{userNameAuth && userNameAuth.name}</h3>
-          {!userNameAuth && <Link to="/signUp">SignUp</Link>}
+          <h3 style={{ margin: '0' }}>
+            {userNameAuth && (
+              <Typography variant="h5">{userNameAuth.name}</Typography>
+            )}
+          </h3>
+          {!userNameAuth && (
+            <Typography variant="h4">
+              <Link to="/signUp" style={{ textDecoration: 'none' }}>
+                SignUp
+              </Link>
+            </Typography>
+          )}
           <Button
             onClick={handleLogOut}
             variant="contained"
