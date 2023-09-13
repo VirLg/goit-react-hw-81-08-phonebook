@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { AppBar, Button, Toolbar, Typography } from '@mui/material';
 import { delToken } from 'api/auth';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { logOutThunk } from 'redux/auth/authThunk';
 import { tokenSelector, userSelector } from 'redux/selector';
 import logo from 'logo.svg';
+import { Accessibility, Accessible } from '@mui/icons-material';
 const Header = () => {
   const isAuth = useSelector(tokenSelector);
   const userNameAuth = useSelector(userSelector);
@@ -29,10 +30,15 @@ const Header = () => {
         </Typography>
         <>
           <h3>{userNameAuth && userNameAuth.name}</h3>
-          <button onClick={handleLogOut}>
-            {isAuth ? 'Log Out' : 'Log In'}
-          </button>
           {!userNameAuth && <Link to="/signUp">SignUp</Link>}
+          <Button
+            onClick={handleLogOut}
+            variant="contained"
+            color="secondary"
+            endIcon={<Accessibility />}
+          >
+            {isAuth ? 'Log Out' : 'Log In'}
+          </Button>
         </>
       </Toolbar>
     </AppBar>
