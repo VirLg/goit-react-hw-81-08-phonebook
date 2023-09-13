@@ -41,5 +41,6 @@ export const getContactSwager = async () => {
   return data;
 };
 export const deleteContactSwager = id => {
+  console.log('id', id);
   instance.delete(`/contacts/${id}`);
 };

@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import PropTypes from 'prop-types';
-import { ContactsDiv, Button } from './Contacts.styled';
+import { Button } from './Contacts.styled';
 
 import { contactArrSelector, tokenSelector } from 'redux/selector';
 import { deleteContactSwager } from 'api/auth';
 import { getContactThunk } from 'redux/thunks/thunks';
 import { Card, CardActions, CardContent, Typography } from '@mui/material';
 
-import { Delete } from '@mui/icons-material';
 const Contact = ({ filter }) => {
   const contactArr = useSelector(contactArrSelector);
   const isAuth = useSelector(tokenSelector);
@@ -18,13 +17,16 @@ const Contact = ({ filter }) => {
   );
   const handleDelete = id => {
     deleteContactSwager(id);
-    dispatch(getContactThunk(isAuth));
   };
+  useEffect(() => {
+    dispatch(getContactThunk(isAuth));
+  }, [dispatch, isAuth]);
   return (
     contactArr &&
     visible.map(({ number, name, id }) => {
       return (
         <Card
+          key={id}
           sx={{
             maxWidth: 600,
             outline: '1px solid teal',

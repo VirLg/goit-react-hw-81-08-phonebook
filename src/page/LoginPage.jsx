@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginThunk } from 'redux/auth/authThunk';
 import { tokenSelector } from 'redux/selector';
-import { ReplyAll, Send } from '@mui/icons-material';
+import { ReplyAll } from '@mui/icons-material';
 const LoginPage = () => {
   const dishath = useDispatch();
   const navigate = useNavigate();

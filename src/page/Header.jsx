@@ -31,11 +31,17 @@ const Header = () => {
           </NavLink>
         </Typography>
         <>
-          <h3 style={{ margin: '0' }}>
+          <p style={{ margin: '0' }}>
             {userNameAuth && (
-              <Typography variant="h5">{userNameAuth.name}</Typography>
+              <Typography
+                variant="h5"
+                component="span"
+                sx={{ lineHeight: '2.334' }}
+              >
+                {userNameAuth.name}
+              </Typography>
             )}
-          </h3>
+          </p>
           {!userNameAuth && (
             <Typography variant="h4">
               <Link to="/signUp" style={{ textDecoration: 'none' }}>
@@ -48,6 +54,7 @@ const Header = () => {
             variant="contained"
             color="secondary"
             endIcon={<Accessibility />}
+            sx={{ ml: '1rem' }}
           >
             {isAuth ? 'Log Out' : 'Log In'}
           </Button>

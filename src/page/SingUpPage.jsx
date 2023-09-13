@@ -1,9 +1,9 @@
-import { ReplyAll, Send } from '@mui/icons-material';
+import { ReplyAll } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import FormSingnUp from 'components/Form/FormSingnUp';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { signUpThunk } from 'redux/auth/authThunk';
 
 const SignUpPage = () => {

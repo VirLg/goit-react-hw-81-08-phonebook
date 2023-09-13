@@ -5,7 +5,7 @@ const HomePage = () => {
     <div className="container-form">
       <img
         src={contact}
-        alt=""
+        alt="book"
         style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}
       />
     </div>
