@@ -40,7 +40,8 @@ export const getContactSwager = async () => {
   const data = await instance('/contacts');
   return data;
 };
-export const deleteContactSwager = id => {
-  console.log('id', id);
-  instance.delete(`/contacts/${id}`);
+export const deleteContactSwager = async id => {
+  const data = await instance.delete(`/contacts/${id}`);
+  await getContactSwager();
+  if (!data) return new Error('some');
 };

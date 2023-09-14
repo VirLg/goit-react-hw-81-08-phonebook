@@ -19,7 +19,7 @@ const ContactPage = () => {
   const isAuth = useSelector(tokenSelector);
   const [filter, setFilter] = useState('');
   const contactArr = useSelector(contactArrSelector);
-  const addNewContact = props => {
+  const addNewContact = async props => {
     const { name, number } = props;
     if (contactArr) {
       const check = contactArr.find(
@@ -28,7 +28,7 @@ const ContactPage = () => {
       if (check) {
         return alert('NoNoNo');
       }
-      addNewContactSwager({ name, number });
+      await addNewContactSwager({ name, number });
       dispatch(getContactThunk(isAuth));
     }
   };
@@ -58,8 +58,3 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
-// <>
-//   (<Form addNewContact={addNewContact} />
-//   <Filter filterContact={filterContact} />
-//   <Contact filter={filter} />)
-// </>;
